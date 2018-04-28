@@ -31,6 +31,16 @@ export default class ClapButton extends Component{
     this.setState({count});
   }
 
+  keepClapping = () => {
+    this.clapTimmer =setInterval( () => {this.onPress()}, 150)
+  }
+
+  stopClapping = () => {
+    if(this.clapTimmer) {
+      clearInterval(this.clapTimmer);
+    }
+  }
+
   renderClaps = () => {
     return this.state.claps.map( countNum =>  
     <ClapBubble 
@@ -45,8 +55,13 @@ export default class ClapButton extends Component{
     : <Image source={require('../Images/clapping.png')} style= {styles.image} />
     return (
       <View style={styles.container}>
-        <TouchableOpacity activeOpacity={0.7} style={styles.clapButton} onPress={this.onPress}>
-          {clapIcon}
+        <TouchableOpacity 
+          activeOpacity={0.7} 
+          style={styles.clapButton} 
+          onPressIn={this.keepClapping}
+          onPressOut={this.stopClapping}
+          onPress={this.onPress}>
+            {clapIcon}
         </TouchableOpacity>
         {this.renderClaps()}
       </View>

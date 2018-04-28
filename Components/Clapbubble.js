@@ -29,7 +29,11 @@ export default class ClabBubble extends Component{
           toValue: 1,
           duration: 500
         })
-    ]).start();
+    ]).start(() => {
+        setTimeout( () =>  {
+          this.props.animationComplete(this.props.count)
+        },400);
+    });
   }
   
   render() {

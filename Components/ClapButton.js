@@ -17,6 +17,12 @@ export default class ClapButton extends Component{
     }
   }
 
+  animationComplete = (countNum) => {
+    let claps = this.state.claps;
+    claps.splice(claps.indexOf(countNum), 1);
+    this.setState({claps});
+  }
+  
   onPress = () => {
     let count = this.state.count;
     let claps = this.state.claps;
@@ -26,7 +32,12 @@ export default class ClapButton extends Component{
   }
 
   renderClaps = () => {
-    return this.state.claps.map( countNum =>  <ClapBubble key={countNum} count={countNum}/> );
+    return this.state.claps.map( countNum =>  
+    <ClapBubble 
+      key={countNum} 
+      count={countNum}
+      animationComplete={this.animationComplete}
+    /> );
   }
 
   render() {

@@ -1,5 +1,7 @@
 # Medium-Clapping
-This is donw followign a tutorial.
+This is done followign a tutorial.
 
 
+
+![Alt text](./Images/clap.gif?raw=true "Medium Clap")
 
